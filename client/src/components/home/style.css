@@ -1,0 +1,670 @@
+.container {
+  height: 100vh;
+  width: 90vw;
+  margin: auto;
+}
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.nav .heading {
+  display: flex;
+}
+.nav .heading li {
+  list-style-type: none;
+  font-weight: 600;
+  font-size: 50px;
+}
+nav .login button{
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-size: large;
+  font-weight: 500;
+  cursor: pointer;
+}
+.nav .heading .li1 {
+  color: rgb(255, 49, 210);
+}
+.nav .heading .li2 {
+  color: #fff;
+}
+.nav .heading .li3 {
+  color: rgb(47, 255, 105);
+}
+.nav .links {
+  display: flex;
+  color: white;
+}
+.nav .links li {
+  list-style-type: none;
+  font-size: x-large;
+  margin: 16px 20px;
+  cursor: pointer;
+}
+.nav .menuIcon{
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+.nav .links .profile {
+  height: 44px;
+  width: 44px;
+  background-color: brown;
+  border-radius: 50%;
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.nav .links .profile span {
+  background-color: brown;
+  font-size: 40px;
+}
+.middleSection {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.middleSection .left {
+  font-size: 30px;
+  font-weight: 600;
+}
+.middleSection .left .enjoy,
+.online {
+  color: rgb(76, 127, 203);
+}
+.middleSection .left .your,
+.and,
+.work,
+.dot {
+  color: #fff;
+}
+.middleSection .left .notes1,
+.notesSaver,
+.with {
+  color: rgb(198, 79, 200);
+}
+.middleSection .left .make,
+.is {
+  color: rgb(47, 255, 105);
+}
+.middleSection .left .notes2 {
+  color: rgb(257, 131, 199);
+}
+.middleSection .left .here,
+.previous {
+  color: rgb(213, 102, 102);
+}
+.middleSection .right .btnContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: 70px;
+  align-items: center;
+}
+.middleSection .right .btnContainer .addNoteBtn {
+  background: rgb(225, 197, 49);
+  height: 60px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  font-size: 25px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.middleSection .right .btnContainer .addNoteText {
+  color: rgb(201, 201, 121);
+  margin-top: 10px;
+  display: flex;
+  font-size: 20px;
+}
+.middleSection .right .btnContainer .addNoteText .clickHere {
+  color: rgb(255, 49, 210);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.bottom {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto;
+  width: 90vw;
+  margin-top: 120px;
+}
+.bottom .noteContainer {
+  background: #333333;
+  height: 185px;
+  width: 335px;
+  border-radius: 10px;
+  margin: 10px;
+  border: 1.25px ridge;
+  transition: all ease-in-out;
+  animation: borderWave 1.25s ease-in-out alternate-reverse infinite both;
+}
+.bottom .noteContainer .buttons {
+  display: flex;
+  width: 300px;
+  margin: auto;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.bottom .noteContainer .update,
+.delete {
+  padding: 1px 2px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.noteTitle {
+  text-align: center;
+  color: #dbc98c;
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+.noteDescription {
+  width: 300px;
+  height: 90px;
+  overflow: hidden;
+  margin: auto;
+  color: beige;
+}
+.skContainer {
+  display: grid;
+  width: 90vw;
+  gap: 20px;
+  grid-template-columns: auto auto auto auto;
+}
+.bottom .noteContainerSk {
+  background: #fff;
+  height: 180px;
+  width: 320px;
+  margin: 0;
+  border-radius: 10px;
+  transition: all ease-in-out;
+  animation: imageWave 1s ease-in-out alternate-reverse infinite both;
+}
+@keyframes borderWave {
+  0% {
+    border-color: #d035ac red green yellow;
+  }
+  25% {
+    border-color: yellow#d035ac red green;
+  }
+  50% {
+    border-color: green yellow#d035ac red;
+  }
+  100% {
+    border-color: #d035ac red green yellow;
+  }
+}
+@keyframes imageWave {
+  from {
+    background: linear-gradient(45deg, #d7bf25b3, #5a15b4b7);
+  }
+  to {
+    background: linear-gradient(45deg, #5a15b4b7, #d7bf25b3);
+  }
+}
+.addNoteHere,
+.loginHere,
+.signupHere,
+.showNoteDetailsHere {
+  height: 500px;
+  width: 90vw;
+  margin-top: 50px;
+  position: absolute;
+  top: -10%;
+  left: 0%;
+}
+
+/************** MEDIA QUERY SECTION  ******************************************/
+
+@media screen and (max-width: 1200px) {
+  /* NAV SECTION */
+  .nav .heading li {
+  }
+  .nav .links li {
+    padding-top: 10px;
+  }
+  nav .login button{
+    padding: 5px 10px;
+    font-size: 18px;
+  }
+  .profile{
+    padding-bottom: 7px;
+  }
+  /* MIDDLE SECTION */
+  .middleSection .right .btnContainer {
+    position: relative;
+    right: 70px;
+  }
+  .middleSection .right .btnContainer .addNoteBtn {
+    height: 50px;
+    width: 180px;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  .middleSection .right .btnContainer .addNoteText {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  /* BOTTOM SECTION */
+  .bottom {
+    grid-template-columns: auto auto auto;
+    margin-top: 100px;
+  }
+  .skContainer {
+    grid-template-columns: auto auto auto;
+  }
+}
+@media screen and (max-width: 1100px) {
+  /* BOTTOM SECTION */
+  .bottom {
+    margin-top: 120px;
+  }
+  .bottom .noteContainer {
+    height: 170px;
+    width: 280px;
+    border-radius: 5px;
+  }
+  .bottom .noteContainer .buttons {
+    width: 250px;
+    margin-top: 10px;
+  }
+  .bottom .noteContainer .update,
+  .delete {
+    padding: 1px 2px;
+  }
+  .noteTitle {
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .noteDescription {
+    width: 250px;
+    height: 90px;
+  }
+  .skContainer {
+    width: 90vw;
+  }
+  .skContainer .noteContainerSk {
+    height: 160px;
+    width: 300px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  /* MIDDLE SECTION */
+  .middleSection .right .btnContainer {
+    position: relative;
+    right: 0px;
+  }
+
+  /* BOTTOM SECTION */
+  .bottom {
+    margin-top: 120px;
+  }
+  .bottom .noteContainer {
+    height: 150px;
+    width: 240px;
+  }
+  .noteTitle {
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .noteDescription {
+    font-size: 15px;
+    width: 220px;
+    height: 75px;
+  }
+  .bottom .noteContainer .buttons {
+    width: 220px;
+    margin: 5px;
+  }
+  .skContainer .noteContainerSk {
+    height: 140px;
+    width: 250px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .nav .links {
+    display: none;
+  }
+  .nav .menuIcon{
+    display: block;
+  }
+  /* Middle Section */
+  .middleSection .left {
+    font-size: 24px;
+  }
+  .middleSection .right .btnContainer .addNoteBtn {
+    height: 40px;
+    width: 150px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .middleSection .right .btnContainer .addNoteText {
+    font-size: 14px;
+  }
+  /* BOTTOM SECTION */
+  .bottom {
+    margin-top: 100px;
+  }
+  .bottom .noteContainer {
+    height: 150px;
+    width: 220px;
+  }
+  .noteTitle {
+    font-size: 20px;
+  }
+  .noteDescription {
+    font-size: 16px;
+    width: 190px;
+    height: 70px;
+  }
+  .bottom .noteContainer .buttons {
+    width: 190px;
+    margin: 5px auto;
+  }
+  .skContainer .noteContainerSk {
+    height: 140px;
+    width: 220px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  /* NAV SECTION */
+  .nav .heading li {
+    font-size: 30px;
+  }
+  .nav .links li {
+    font-size: medium;
+    padding-top: 14px;
+  }
+  .nav .links .profile span {
+    padding-bottom: 14px;
+  }
+  /* Middle Section */
+  .middleSection {
+    margin-top: 80px;
+  }
+  .middleSection .left {
+    font-size: 22px;
+  }
+  .middleSection .right .btnContainer .addNoteBtn {
+    height: 40px;
+    width: 150px;
+    font-size: 22px;
+  }
+  .middleSection .right .btnContainer .addNoteText {
+    font-size: 14px;
+  }
+  /* BOTTOM SECTION */
+  .bottom {
+    margin-top: 80px;
+    grid-template-columns: auto auto;
+  }
+  .bottom .noteContainer {
+    height: 150px;
+    width: 270px;
+  }
+  .noteTitle {
+    font-size: 20px;
+  }
+  .noteDescription {
+    font-size: 16px;
+    width: 220px;
+    height: 70px;
+  }
+  .bottom .noteContainer .buttons {
+    width: 220px;
+    margin: 5px auto;
+  }
+  .skContainer .noteContainerSk {
+    height: 140px;
+    width: 200px;
+  }
+}
+@media screen and (max-width: 700px) {
+  /* Middle Section */
+
+  .middleSection .left {
+    font-size: 25px;
+  }
+  .middleSection .right .btnContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .middleSection .right .btnContainer .addNoteBtn {
+    height: 40px;
+    width: 170px;
+    font-size: 25px;
+  }
+  .middleSection .right .btnContainer .addNoteText {
+    display: none;
+  }
+  /* BOTTOM SECTION */
+  .bottom {
+    margin-top: 100px;
+    grid-template-columns: auto auto;
+  }
+  .bottom .noteContainer {
+    height: 150px;
+    width: 270px;
+  }
+  .noteTitle {
+    font-size: 20px;
+  }
+  .noteDescription {
+    font-size: 16px;
+    width: 220px;
+    height: 70px;
+  }
+  .bottom .noteContainer .buttons {
+    width: 220px;
+    margin: 5px auto;
+  }
+  .skContainer {
+    grid-template-columns: auto auto;
+  }
+  .skContainer .noteContainerSk {
+    height: 140px;
+    width: 250px;
+  }
+}
+@media screen and (max-width: 600px) {
+  /* NAV SECTION */
+  .nav .heading li {
+    font-size: 30px;
+  }
+  .nav .links li {
+    font-size: medium;
+    padding-top: 14px;
+  }
+  .nav .links .profile span {
+    padding-bottom: 14px;
+  }
+  .nav .menuIcon{
+    font-size: 25px;
+  }
+  /* Middle Section */
+  .middleSection {
+    height: 300px;
+    flex-direction: column;
+    margin-top: 100px;
+  }
+  .middleSection .left {
+    font-size: 28px;
+  }
+  .middleSection .right .btnContainer .addNoteBtn {
+    height: 48px;
+    width: 190px;
+    font-size: 28px;
+  }
+  .middleSection .right .btnContainer .addNoteText {
+    font-size: 16px;
+    display: flex;
+  }
+  /* BOTTOM SECTION */
+  .bottom {
+    margin-top: 80px;
+    grid-template-columns: auto;
+    place-items: center;
+  }
+  .bottom .noteContainer {
+    height: 170px;
+    width: 350px;
+  }
+  .noteTitle {
+    font-size: 20px;
+  }
+  .noteDescription {
+    font-size: 16px;
+    width: 310px;
+    height: 95px;
+  }
+  .bottom .noteContainer .buttons {
+    width: 310px;
+    margin: 5px auto;
+  }
+  .skContainer {
+    grid-template-columns: auto;
+    place-items: center;
+  }.noteContainerSk:nth-child(2n){
+    display:  none;
+  }
+  .skContainer .noteContainerSk {
+    height: 170px;
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+/* NAV SECTION */
+.nav .heading li {
+  font-size: 30px;
+}
+.nav .menuIcon{
+  font-size: 25px;
+}
+/* Middle Section */
+.middleSection {
+  height: 250px;
+  flex-direction: column;
+  margin-top: 70px;
+}
+.middleSection .left {
+  font-size: 22px;
+}
+.middleSection .right .btnContainer .addNoteBtn {
+  height: 40px;
+  width: 160px;
+  font-size: 22px;
+}
+.middleSection .right .btnContainer .addNoteText {
+  font-size: 13px;
+  display: flex;
+}
+/* BOTTOM SECTION */
+.bottom {
+  margin-top: 80px;
+  grid-template-columns: auto;
+  place-items: center;
+}
+.bottom .noteContainer {
+  height: 170px;
+  width: 310px;
+}
+.noteTitle {
+  font-size: 20px;
+}
+.noteDescription {
+  font-size: 16px;
+  width: 290px;
+  height: 90px;
+}
+.bottom{
+  margin-top: 50px;
+}
+.bottom .noteContainer .buttons {
+  width: 290px;
+  margin: 5px auto;
+}
+.skContainer {
+  grid-template-columns: auto;
+  place-items: center;
+  
+}
+.skContainer .noteContainerSk {
+  height: 150px;
+  width: 300px;
+}
+}
+@media screen and (max-width: 360px) {
+  /* NAV SECTION */
+.nav .heading li {
+  font-size: 25px;
+}
+.nav .menuIcon{
+  font-size: 25px;
+}
+/* Middle Section */
+.middleSection {
+  height: 250px;
+  flex-direction: column;
+  margin-top: 70px;
+}
+.middleSection .left {
+  font-size: 20px;
+}
+.middleSection .right .btnContainer .addNoteBtn {
+  height: 40px;
+  width: 150px;
+  font-size: 20px;
+}
+.middleSection .right .btnContainer .addNoteText {
+  font-size: 13px;
+  display: flex;
+}
+/* BOTTOM SECTION */
+.bottom {
+  margin-top: 80px;
+  grid-template-columns: auto;
+  place-items: center;
+}
+.bottom .noteContainer {
+  height: 170px;
+  width: 280px;
+}
+.noteTitle {
+  font-size: 20px;
+}
+.noteDescription {
+  font-size: 16px;
+  width: 260px;
+  height: 90px;
+}
+.bottom{
+  margin-top: 50px;
+}
+.bottom .noteContainer .buttons {
+  width: 260px;
+  margin: 5px auto;
+}
+.skContainer {
+  grid-template-columns: auto;
+  place-items: center;
+  
+}
+.skContainer .noteContainerSk {
+  height: 120px;
+  width: 250px;
+}
+}

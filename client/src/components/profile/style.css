@@ -1,0 +1,38 @@
+.profileContainer{
+    position: absolute;
+    transition: all ease-in-out .25s;
+    min-height: 200px;
+    min-width: 200px;
+    background: #fff;
+    padding: 0 15px;
+    top: 70px;
+    right: 0px;
+    border-radius: 2px;
+    z-index: 1;
+}
+.show{
+    right: 2px;
+}
+.hide{
+    right: -310px;
+}
+.profileContainer .content{
+    margin-left: 10px;
+}
+.profileContainer .content .name{
+    color: #804545;
+    margin: 10px 0;
+    cursor: pointer;
+}
+.close{
+    text-align: end;
+}
+.close span{
+    background: #2f2e2e;
+    color: #fff;
+    padding: 0px 5px;
+    position: relative;
+    left: 10px;
+    top:2px;
+    cursor: pointer;
+}
