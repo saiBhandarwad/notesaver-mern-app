@@ -15,7 +15,6 @@ connectToMongo( process.env.MONGO_URL)
 server.use(express.json())
 server.use(cors({
     origin:['https://notesaver-front-end.vercel.app'],
-    // origin:['http://localhost:5173'],
     methods:['GET','POST','PUT','DELETE'],
     credentials:true
 }))
