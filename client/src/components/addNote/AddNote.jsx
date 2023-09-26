@@ -12,13 +12,13 @@ export default function AddNote({handleNote}) {
 
     const addNoteToDb = async() =>{
         handleNote(false)
-        const response = await axios.post('/notes',
+        const response = await axios.post('https://notesaver-mern-app.vercel.app/notes',
         {title,description},
         {headers:{'auth-token': token}})
         console.log({response});
 
         //fetching notes again
-        const res = await axios.get('/notes', {
+        const res = await axios.get('https://notesaver-mern-app.vercel.app/notes', {
             headers: { 'auth-token': token }
         })
         dispatch(setNotesToStore(res.data))

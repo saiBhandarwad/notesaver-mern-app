@@ -21,7 +21,7 @@ export default function Login({ handleLogin, handleSignupForm, handleIsUser, han
         return;
     }
     //********* if token is not available ************
-    const response = await axios.post('/user/login', {
+    const response = await axios.post('https://notesaver-mern-app.vercel.app/user/login', {
       email, password
     })
 
@@ -31,7 +31,7 @@ export default function Login({ handleLogin, handleSignupForm, handleIsUser, han
       localStorage.setItem('auth-token', response.data.authToken)
       //fetching notes again
       handleLoading(true)
-      const res = await axios.get('/notes', {
+      const res = await axios.get('https://notesaver-mern-app.vercel.app/notes', {
         headers: { 'auth-token': response.data.authToken }
       })
       dispatch(setNotesToStore(res.data))

@@ -14,7 +14,7 @@ const port = process.env.PORT
 connectToMongo( process.env.MONGO_URL)
 server.use(express.json())
 server.use(cors({
-    origin:[''],
+    origin:['https://notesaver-front-end.vercel.app/'],
     methods:['GET','POST','PUT','DELETE'],
     credentials:true
 }))

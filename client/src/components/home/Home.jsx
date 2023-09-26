@@ -27,7 +27,7 @@ export default function Home() {
 
     const login = async (token) => {
         if (token) {
-            const response = await axios.post('/user/login', {}, { headers: { "auth-token": token } })
+            const response = await axios.post('https://notesaver-mern-app.vercel.app/user/login', {}, { headers: { "auth-token": token } })
             dispatch(setUser(response.data[0]))
             // console.log({msg: "token was available" ,user:response});
             setIsUser(true)
@@ -36,7 +36,7 @@ export default function Home() {
 
     const fetchAllNotes = async (token) => {
         if (token) {
-            const response = await axios.get('/notes', {
+            const response = await axios.get('https://notesaver-mern-app.vercel.app/notes', {
                 headers: { 'auth-token': token }
             })
             dispatch(setNotesToStore(response.data))
@@ -47,7 +47,7 @@ export default function Home() {
     const deleteNoteFromDb = async (e, id) => {
         e.stopPropagation()
         setLoading(true)
-        await axios.delete(`/notes/${id}`, { headers: { "auth-token": token } })
+        await axios.delete(`https://notesaver-mern-app.vercel.app/notes/${id}`, { headers: { "auth-token": token } })
         fetchAllNotes(token)
         setLoading(false)
 
