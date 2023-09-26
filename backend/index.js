@@ -13,10 +13,12 @@ const port = process.env.PORT
 
 connectToMongo( process.env.MONGO_URL)
 server.use(express.json())
-server.use(cors())
+server.use(cors({
+    origin:[''],
+    methods:['GET','POST','PUT','DELETE'],
+    credentials:true
+}))
 // server.use(express.static('build'))
-
-// server.use(urlencoded({extended:true}))
 
 server.use('/user', userRouter)
 server.use('/notes',auth, notesRouter)
