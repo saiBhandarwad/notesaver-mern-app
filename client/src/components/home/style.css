@@ -3,6 +3,13 @@
   width: 90vw;
   margin: auto;
 }
+.notifyhere{
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 0;
+  background: white;
+}
 .nav {
   width: 100%;
   display: flex;
@@ -342,12 +349,12 @@ nav .login button{
   }
   /* Middle Section */
   .middleSection .left {
-    font-size: 24px;
+    font-size: 28px;
   }
   .middleSection .right .btnContainer .addNoteBtn {
-    height: 40px;
-    width: 150px;
-    font-size: 20px;
+    height: 48px;
+    width: 160px;
+    font-size: 25px;
     font-weight: 600;
   }
   .middleSection .right .btnContainer .addNoteText {
@@ -382,7 +389,7 @@ nav .login button{
 @media screen and (max-width: 800px) {
   /* NAV SECTION */
   .nav .heading li {
-    font-size: 30px;
+    font-size: 40px;
   }
   .nav .links li {
     font-size: medium;
@@ -396,12 +403,15 @@ nav .login button{
     margin-top: 80px;
   }
   .middleSection .left {
-    font-size: 22px;
+    font-size: 26px;
+  }
+  .middleSection .right .btnContainer .addNoteText {
+    display: none;
   }
   .middleSection .right .btnContainer .addNoteBtn {
-    height: 40px;
-    width: 150px;
-    font-size: 22px;
+    height: 45px;
+    width: 160px;
+    font-size: 24px;
   }
   .middleSection .right .btnContainer .addNoteText {
     font-size: 14px;
@@ -482,7 +492,7 @@ nav .login button{
 @media screen and (max-width: 600px) {
   /* NAV SECTION */
   .nav .heading li {
-    font-size: 30px;
+    font-size: 40px;
   }
   .nav .links li {
     font-size: medium;
@@ -549,7 +559,7 @@ nav .login button{
 @media screen and (max-width: 500px) {
 /* NAV SECTION */
 .nav .heading li {
-  font-size: 30px;
+  font-size: 35px;
 }
 .nav .menuIcon{
   font-size: 25px;

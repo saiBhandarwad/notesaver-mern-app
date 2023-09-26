@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './style.css'
 import axios from 'axios'
 
-export default function Signup({ handleSignup, handleLoginForm, setIsUser,login }) {
+export default function Signup({ handleSignup, handleLoginForm, setIsUser,login,handleNotify }) {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -18,6 +18,7 @@ export default function Signup({ handleSignup, handleLoginForm, setIsUser,login 
     })
 
     if (response.data.authToken) {
+      handleNotify('account created successfully')
       setIsUser(true)
       const token = response.data.authToken
       localStorage.setItem('auth-token', token)

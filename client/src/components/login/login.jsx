@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { setNotesToStore, setUser } from '../../redux/userSlice'
 
-export default function Login({ handleLogin, handleSignupForm, handleIsUser, handleLoading }) {
+export default function Login({ handleLogin, handleSignupForm, handleIsUser, handleLoading,handleNotify }) {
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const dispatch = useDispatch()
@@ -17,7 +17,8 @@ export default function Login({ handleLogin, handleSignupForm, handleIsUser, han
     handleLogin(false)
     console.log({ msg: "token was not available" });
     if(email.length ===0 || password.length === 0){
-        console.log('you have not enter email or password');
+        handleNotify('you have not enter email or password');
+
         return;
     }
     //********* if token is not available ************
@@ -27,7 +28,7 @@ export default function Login({ handleLogin, handleSignupForm, handleIsUser, han
 
     console.log({ msg: "token was not available", response });
     if (response?.data?.authToken) {
-
+      handleNotify('login successful')
       localStorage.setItem('auth-token', response.data.authToken)
       //fetching notes again
       handleLoading(true)
@@ -37,11 +38,9 @@ export default function Login({ handleLogin, handleSignupForm, handleIsUser, han
       dispatch(setNotesToStore(res.data))
       handleIsUser(true)
       handleLoading(false)
+    }else{
+      handleNotify('please login using valid credentials')
     }
-
-
-
-
   }
   return (
     <>

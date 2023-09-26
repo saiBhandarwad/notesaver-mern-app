@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { setNotesToStore } from '../../redux/userSlice'
 
-export default function AddNote({handleNote}) {
+export default function AddNote({handleNote,handleNotify}) {
     const dispatch = useDispatch()
     const [title,setTitle] = useState('')
     const [description,setDescription] = useState('')
@@ -12,10 +12,15 @@ export default function AddNote({handleNote}) {
 
     const addNoteToDb = async() =>{
         handleNote(false)
+        if(title.length === 0 ){
+            handleNotify('title should not be empty')
+             return;
+        }
         const response = await axios.post('https://notesaver-mern-app.vercel.app/notes',
         {title,description},
         {headers:{'auth-token': token}})
         console.log({response});
+        handleNotify('note created successfully')
 
         //fetching notes again
         const res = await axios.get('https://notesaver-mern-app.vercel.app/notes', {

@@ -9,8 +9,11 @@ import axios from 'axios'
 import { setNotesToStore, setUser } from '../../redux/userSlice'
 import Spinner from '../spinner/Spinner'
 import NoteDetails from '../noteDetails/NoteDetails'
+import Notify from '../notification/Notify'
 
 export default function Home() {
+    const [showNotify, setShowNotify] = useState(false)
+    const [notifyMsg, setNotifyMsg] = useState('')
     const [showProfile, setShowProfile] = useState(false)
     const [showAddNote, setShowAddNote] = useState(false)
     const [showLogin, setShowLogin] = useState(false)
@@ -24,14 +27,21 @@ export default function Home() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user.user)
     const notes = useSelector(state => state.user.notes)
-
+    
     const login = async (token) => {
-        if (token) {
-            const response = await axios.post('https://notesaver-mern-app.vercel.app/user/login', {}, { headers: { "auth-token": token } })
-            dispatch(setUser(response.data[0]))
-            // console.log({msg: "token was available" ,user:response});
-            setIsUser(true)
+        try {
+            if (token) {
+                const response = await axios.post('https://notesaver-mern-app.vercel.app/user/login', {}, { headers: { "auth-token": token } })
+                dispatch(setUser(response.data[0]))
+                console.log({response});
+                setIsUser(true)
+                handleNotify('login successful')
+                
+            }
+        } catch (error) {
+            
         }
+        
     }
 
     const fetchAllNotes = async (token) => {
@@ -48,6 +58,7 @@ export default function Home() {
         e.stopPropagation()
         setLoading(true)
         await axios.delete(`https://notesaver-mern-app.vercel.app/notes/${id}`, { headers: { "auth-token": token } })
+        handleNotify('deleted note successfully')
         fetchAllNotes(token)
         setLoading(false)
 
@@ -64,17 +75,22 @@ export default function Home() {
         setShowUpdateBox(boolean)
     }
     const handleSetShowAddNote = () => {
+        if(!user){
+            handleNotify('login first to create your notes')
+            return;
+        }
         scroll({
             top: 0,
             behavior: "smooth",
         })
         setShowAddNote(!showAddNote)
+        handleCloseProfileBox()
     }
     const handleLogin = (boolean) => {
         setShowLogin(boolean)
     }
     const handleSignup = (boolean) => {
-        
+
         setShowSignup(boolean)
 
     }
@@ -91,6 +107,7 @@ export default function Home() {
     }
     const handleLogout = () => {
         localStorage.removeItem('auth-token')
+        handleNotify('logout successfully')
         setIsUser(false)
         setShowProfile(false)
         dispatch(setNotesToStore([]))
@@ -106,12 +123,22 @@ export default function Home() {
         setShowNoteDetails(true)
         console.log({ note });
     }
+    const handleNotify = (msg) =>{
+        const newMsg = msg.slice(0,1).toUpperCase() + msg.slice(1)
+        setNotifyMsg(newMsg)
+        setShowNotify(true)
+        setTimeout(() => {
+            setShowNotify(false)
+        }, 2000);
+    }
     useEffect(() => {
         login(token)
         fetchAllNotes(token)
     }, [token])
     return (
         <div className='container'>
+            {showNotify && <Notify message={notifyMsg} />
+            }
             <nav className='nav'>
                 <ul className='heading'>
                     <li className='li1'>Note</li>
@@ -121,19 +148,20 @@ export default function Home() {
                 <ul className='links'>
                     <li>home</li>
                     <li>about</li>
-                    <li>contact</li>
+                    <li onClick={()=>handleNotify('we do not have specific contact page yet')}>contact</li>
                     {isUser ? <li className='profile' onClick={() => setShowProfile(!showProfile)}><span>{user?.firstName?.toUpperCase().slice(0, 1)}</span></li> : <li className='login' onClick={() => setShowLogin(true)}><button>Login</button></li>}
                 </ul>
-                <div className="menuIcon" onClick={()=>setShowProfile(!showProfile)}><i className="fa-solid fa-bars menuIcon" style={{color:"white"}}></i></div>
+                <div className="menuIcon" onClick={() => setShowProfile(!showProfile)}><i className="fa-solid fa-bars menuIcon" style={{ color: "white" }}></i></div>
                 {<Profile showProfile={showProfile}
-                handleLogout={handleLogout}
-                handleCloseProfileBox={handleCloseProfileBox}
-                fetchAllNotes={fetchAllNotes}
-                isUser={isUser}
-                setShowLogin={setShowLogin}
-            />}
-                </nav>
-                <div className="middleSection">
+                    handleLogout={handleLogout}
+                    handleCloseProfileBox={handleCloseProfileBox}
+                    fetchAllNotes={fetchAllNotes}
+                    isUser={isUser}
+                    setShowLogin={setShowLogin}
+                    handleNotify={handleNotify}
+                />}
+            </nav>
+            <div className="middleSection">
                 <div className="left">
                     <div><span className='enjoy'>Enjoy </span><span className='your'>Your </span><span className='notes1'>Notes </span></div>
                     <div><span className='and'>& </span><span className='make'>Make </span><span className='your'>Your </span><span className='notes2'>Notes </span></div>
@@ -149,7 +177,9 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
             <div className="bottom">
+
                 {loading ? <Spinner /> : notes.length !== 0 ? notes.map((note, index) => {
                     return (
                         <div className="noteContainer" key={index} onClick={() => handleShowNoteDetails(note)}>
@@ -179,6 +209,7 @@ export default function Home() {
                 showAddNote && <div className="addNoteHere">
                     <AddNote handleNote={handleNote}
                         handleLoading={handleLoading}
+                        handleNotify={handleNotify}
                     />
                 </div>
             }
@@ -207,6 +238,7 @@ export default function Home() {
                         handleSignupForm={handleSignupForm}
                         handleIsUser={handleIsUser}
                         handleLoading={handleLoading}
+                        handleNotify={handleNotify}
                     />
                 </div>
             }
@@ -218,9 +250,11 @@ export default function Home() {
                         handleLoading={handleLoading}
                         setIsUser={setIsUser}
                         login={login}
+                        handleNotify={handleNotify}
                     />
                 </div>
             }
+
         </div>
 
     )

@@ -15,7 +15,7 @@ font-family: 'Signika', sans-serif;
   width: 100vw;
   overflow-x: hidden;
   background-color: rgb(20, 28, 41);
-  
+  position: relative;
 }
 :root::-webkit-scrollbar{
   background: none;

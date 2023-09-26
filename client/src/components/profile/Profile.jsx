@@ -3,7 +3,7 @@ import './style.css'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 
-export default function Profile({ showProfile, handleLogout, handleCloseProfileBox, fetchAllNotes, isUser, setShowLogin }) {
+export default function Profile({ showProfile, handleLogout, handleCloseProfileBox, fetchAllNotes, isUser, setShowLogin, handleNotify }) {
   const user = useSelector(state => state.user.user)
   const token = localStorage.getItem('auth-token')
 
@@ -19,6 +19,7 @@ export default function Profile({ showProfile, handleLogout, handleCloseProfileB
     const response = await axios.delete('https://notesaver-mern-app.vercel.app/notes/all', {
       headers: { 'auth-token': token }
     })
+    handleNotify('deleted all not successfully')
     fetchAllNotes(token)
   }
   const deleteAccount = () => {
@@ -26,9 +27,8 @@ export default function Profile({ showProfile, handleLogout, handleCloseProfileB
     if (!confirmed) {
       return;
     }
-
-    axios.delete(`https://notesaver-mern-app.vercel.app/user/${user._id}`,{headers:{'auth-token':token}})
-
+    axios.delete(`https://notesaver-mern-app.vercel.app/user/${user._id}`, { headers: { 'auth-token': token } })
+    handleNotify('account deleted successfully')
     deleteAllNotes()
     localStorage.removeItem('auth-token')
     handleCloseProfileBox()
@@ -47,7 +47,7 @@ export default function Profile({ showProfile, handleLogout, handleCloseProfileB
         </> : <>
           <div className="name">HOME</div>
           <div className="name">ABOUT</div>
-          <div className="name">CONTACT</div>
+          <div className="name" onClick={()=>handleNotify('we do not have specific contact page yet')}>CONTACT</div>
           <div className="name" onClick={handleLogin}>LOG IN</div>
         </>
         }
