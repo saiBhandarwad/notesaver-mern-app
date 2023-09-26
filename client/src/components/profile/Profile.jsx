@@ -29,9 +29,8 @@ export default function Profile({ showProfile, handleLogout, handleCloseProfileB
 
     axios.delete(`https://notesaver-mern-app.vercel.app/user/${user._id}`,{headers:{'auth-token':token}})
 
-    localStorage.removeItem('auth-token')
     deleteAllNotes()
-    setShowLogin(true)
+    localStorage.removeItem('auth-token')
     handleCloseProfileBox()
   }
   return (
