@@ -36,7 +36,7 @@ export default function Home() {
 
     const fetchAllNotes = async (token) => {
         if (token) {
-            const response = await axios.get('/notes/', {
+            const response = await axios.get('/notes', {
                 headers: { 'auth-token': token }
             })
             dispatch(setNotesToStore(response.data))

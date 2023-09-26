@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
-const connectToMongo = () =>{
+const connectToMongo = (url) =>{
     try {
-        mongoose.connect('mongodb+srv://saiprasad:Gr16Wh48OLJi7vWN@cluster0.temgdst.mongodb.net/notesaver?retryWrites=true&w=majority').then(()=>{
+        mongoose.connect(url).then(()=>{
         console.log('connection successful');
     })
     } catch (error) {

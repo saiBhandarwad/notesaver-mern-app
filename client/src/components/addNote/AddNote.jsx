@@ -18,7 +18,7 @@ export default function AddNote({handleNote}) {
         console.log({response});
 
         //fetching notes again
-        const res = await axios.get('/notes/', {
+        const res = await axios.get('/notes', {
             headers: { 'auth-token': token }
         })
         dispatch(setNotesToStore(res.data))

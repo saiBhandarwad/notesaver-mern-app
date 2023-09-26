@@ -13,29 +13,8 @@ export default function Login({ handleLogin, handleSignupForm, handleIsUser, han
 
 
   const handleSubmit = async () => {
+
     handleLogin(false)
-
-    // const token = localStorage.getItem('auth-token')
-
-    // *********** if token is available ********
-    // if (token) {
-    //   console.log({ msg: "token was available" });
-    //   const response = await axios.post('/user/login', {
-    //     email, password
-    //   }, { headers: { "auth-token": token } })
-    //   dispatch(setUser(response.data[0]))
-    //   handleIsUser(true)
-    //   console.log({ msg: "token was available", user: response.data[0] });
-
-    //   //fetching notes
-    //   const res = await axios.get('/notes/', {
-    //     headers: { 'auth-token': token }
-    //   })
-    //   dispatch(setNotesToStore(res.data))
-    //   handleLoading(false)
-    // } 
-
-
     console.log({ msg: "token was not available" });
     if(email.length ===0 || password.length === 0){
         console.log('you have not enter email or password');
@@ -52,7 +31,7 @@ export default function Login({ handleLogin, handleSignupForm, handleIsUser, han
       localStorage.setItem('auth-token', response.data.authToken)
       //fetching notes again
       handleLoading(true)
-      const res = await axios.get('/notes/', {
+      const res = await axios.get('/notes', {
         headers: { 'auth-token': response.data.authToken }
       })
       dispatch(setNotesToStore(res.data))
