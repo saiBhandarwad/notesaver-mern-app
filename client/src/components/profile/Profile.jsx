@@ -16,7 +16,7 @@ export default function Profile({showProfile,handleLogout,handleCloseProfileBox,
       if(!confirmed){
         return;
       }
-      const response = await axios.delete('http://localhost:8080/notes/all',{
+      const response = await axios.delete('/notes/all',{
         headers:{'auth-token':token}
       }) 
       fetchAllNotes(token)

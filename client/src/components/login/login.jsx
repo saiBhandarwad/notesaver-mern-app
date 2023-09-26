@@ -20,7 +20,7 @@ export default function Login({ handleLogin, handleSignupForm, handleIsUser, han
     // *********** if token is available ********
     // if (token) {
     //   console.log({ msg: "token was available" });
-    //   const response = await axios.post('http://localhost:8080/user/login', {
+    //   const response = await axios.post('/user/login', {
     //     email, password
     //   }, { headers: { "auth-token": token } })
     //   dispatch(setUser(response.data[0]))
@@ -28,7 +28,7 @@ export default function Login({ handleLogin, handleSignupForm, handleIsUser, han
     //   console.log({ msg: "token was available", user: response.data[0] });
 
     //   //fetching notes
-    //   const res = await axios.get('http://localhost:8080/notes/', {
+    //   const res = await axios.get('/notes/', {
     //     headers: { 'auth-token': token }
     //   })
     //   dispatch(setNotesToStore(res.data))
@@ -42,7 +42,7 @@ export default function Login({ handleLogin, handleSignupForm, handleIsUser, han
         return;
     }
     //********* if token is not available ************
-    const response = await axios.post('http://localhost:8080/user/login', {
+    const response = await axios.post('/user/login', {
       email, password
     })
 
@@ -52,7 +52,7 @@ export default function Login({ handleLogin, handleSignupForm, handleIsUser, han
       localStorage.setItem('auth-token', response.data.authToken)
       //fetching notes again
       handleLoading(true)
-      const res = await axios.get('http://localhost:8080/notes/', {
+      const res = await axios.get('/notes/', {
         headers: { 'auth-token': response.data.authToken }
       })
       dispatch(setNotesToStore(res.data))

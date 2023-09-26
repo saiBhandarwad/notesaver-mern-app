@@ -27,7 +27,7 @@ export default function Home() {
 
     const login = async (token) => {
         if (token) {
-            const response = await axios.post('http://localhost:8080/user/login', {}, { headers: { "auth-token": token } })
+            const response = await axios.post('/user/login', {}, { headers: { "auth-token": token } })
             dispatch(setUser(response.data[0]))
             // console.log({msg: "token was available" ,user:response});
             setIsUser(true)
@@ -36,7 +36,7 @@ export default function Home() {
 
     const fetchAllNotes = async (token) => {
         if (token) {
-            const response = await axios.get('http://localhost:8080/notes/', {
+            const response = await axios.get('/notes/', {
                 headers: { 'auth-token': token }
             })
             dispatch(setNotesToStore(response.data))
@@ -47,7 +47,7 @@ export default function Home() {
     const deleteNoteFromDb = async (e, id) => {
         e.stopPropagation()
         setLoading(true)
-        await axios.delete(`http://localhost:8080/notes/${id}`, { headers: { "auth-token": token } })
+        await axios.delete(`/notes/${id}`, { headers: { "auth-token": token } })
         fetchAllNotes(token)
         setLoading(false)
 

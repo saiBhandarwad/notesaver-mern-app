@@ -7,7 +7,7 @@ export default function NoteDetails({handleNoteDetails,clickedNote,showUpdateBox
     const token = localStorage.getItem('auth-token')
     const updateNoteInDb = async(e,id) =>{
         handleNoteDetails(e,false)
-        const response = await axios.put(`http://localhost:8080/notes/${id}`,{
+        const response = await axios.put(`/notes/${id}`,{
             title,description },{
                 headers:{'auth-token' : token}
             })

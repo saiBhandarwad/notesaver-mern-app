@@ -10,7 +10,7 @@ export default function Signup({ handleSignup, handleLoginForm, setIsUser,login 
 
   const createUserInDb = async () => {
     handleSignup(false)
-    const response = await axios.post('http://localhost:8080/user/signup', {
+    const response = await axios.post('/user/signup', {
       firstName,
       lastName,
       email,

@@ -12,13 +12,13 @@ export default function AddNote({handleNote}) {
 
     const addNoteToDb = async() =>{
         handleNote(false)
-        const response = await axios.post('http://localhost:8080/notes',
+        const response = await axios.post('/notes',
         {title,description},
         {headers:{'auth-token': token}})
         console.log({response});
 
         //fetching notes again
-        const res = await axios.get('http://localhost:8080/notes/', {
+        const res = await axios.get('/notes/', {
             headers: { 'auth-token': token }
         })
         dispatch(setNotesToStore(res.data))
